@@ -8,7 +8,7 @@
 ### Step1
 **Initializes a new module in the current directory**  
 ```go mod init cars.com/cars-practice-kube```  
-**NOTE:** Defines your project as a module, so Go can track and manage dependencies.
+Defines your project as a module, so Go can track and manage dependencies.
 Enables dependency management using Go modules (instead of GOPATH-based workflows).
 Sets the module path, which is used as the import path for your code and sub-packages.
 Marks the root of your Go project, allowing go build, go test, etc., to work correctly
@@ -17,16 +17,16 @@ Marks the root of your Go project, allowing go build, go test, etc., to work cor
 ### Step2
 **Initializes a new kubernetes API project**  
 ```kubebuilder init --domain=cars.com```  
-**NOTE:** Kubebuilder is a framework for building Kubernetes APIs using custom resource definitions (CRDs) in Go. The **"init"** command will sets up a boilerplate project to develop the CRDs/Controllers in GO. The **"--domain"** option will customise and sets a suffix for the CRDs group. The boilerplate project will have contents similar to this:-  
+Kubebuilder is a framework for building Kubernetes APIs using custom resource definitions (CRDs) in Go. The **"init"** command will sets up a boilerplate project to develop the CRDs/Controllers in GO. The **"--domain"** option will customise and sets a suffix for the CRDs group. The boilerplate project will have contents similar to this:-  
 "[ cars-practice-kube]$ ls  
 cmd  config  Dockerfile  go.mod  go.sum  hack  Makefile  PROJECT  README.md  test".  
-YOU STILL NEED TO CREATE A API USING **"create api"** COMMAND TO HAVE CRD/CONTROLLER TEMPELATE CODE.
+**NOTE:** YOU STILL NEED TO CREATE A API USING **"create api"** COMMAND TO HAVE CRD/CONTROLLER TEMPELATE CODE.
 
 
 ### Step3
 **Create a new API (CRD/CONTROLLER)**  
 ```kubebuilder create api --group apps --version v1 --kind Cars```  
-**NOTE:** This command creates a new api under "apps" group of version "v1" and kind "Cars". Also, tempelate code files for the crd and controller(reconciller) will be generated, which will be updated by us to generate the desired behaviour of our CRDs and respective Controller.  
+This command creates a new api under "apps" group of version "v1" and kind "Cars". Also, tempelate code files for the crd and controller(reconciller) will be generated, which will be updated by us to generate the desired behaviour of our CRDs and respective Controller.  
 **The Directory Structure after this:**  
 ├── api/  
 │   └── v1/  
@@ -41,7 +41,7 @@ YOU STILL NEED TO CREATE A API USING **"create api"** COMMAND TO HAVE CRD/CONTRO
 
 ### Step4
 **Implement the code changes**  
-**NOTE:** In this step we will give our Cars CRD and it's respective Controller behavioural logic.
+In this step we will give our Cars CRD and it's respective Controller behavioural logic.
 1. CRDs Defination: This is done using the "struct" present in the "<>_types.go" file.
     "Spec":- Desired State "User defined by User"
     "Status:- Observed State "Set by controller"
@@ -50,11 +50,10 @@ YOU STILL NEED TO CREATE A API USING **"create api"** COMMAND TO HAVE CRD/CONTRO
 
 ### Step5
 **Generate the updated YAMLs and RBAC roles**  
-```make maifests```  
-**NOTE:**  
-->Purpose: Generates Kubernetes CRD YAML manifests and RBAC roles.  
-->What it uses: controller-gen and kustomize.  
-->What it affects:
+```make maifests```    
+**Purpose:** Generates Kubernetes CRD YAML manifests and RBAC roles.  
+**What it uses:** controller-gen and kustomize.  
+**What it affects:**
     Populates/updates:
         config/crd/bases/
         config/rbac/
@@ -63,10 +62,9 @@ YOU STILL NEED TO CREATE A API USING **"create api"** COMMAND TO HAVE CRD/CONTRO
 ### Step6
 **Generate the GO code with latest API defination**  
 ```make generate```  
-**NOTE:**  
-->Purpose: Generates Go code (deepcopy methods, CRD types, etc.) from your API definitions.  
-->What it uses: controller-gen tool.  
-->What it affects:
+**Purpose:** Generates Go code (deepcopy methods, CRD types, etc.) from your API definitions.  
+**What it uses:** controller-gen tool.  
+**What it affects:**
     Updates zz_generated.deepcopy.go files.
     Regenerates scheme, groupversion_info.go, etc.
 
