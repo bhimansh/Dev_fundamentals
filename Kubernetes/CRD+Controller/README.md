@@ -20,22 +20,22 @@ Marks the root of your Go project, allowing go build, go test, etc., to work cor
 **NOTE:** Kubebuilder is a framework for building Kubernetes APIs using custom resource definitions (CRDs) in Go. The **"init"** command will sets up a boilerplate project to develop the CRDs/Controllers in GO. The **"--domain"** option will customise and sets a suffix for the CRDs group. The boilerplate project will have contents similar to this:-  
 "[ cars-practice-kube]$ ls  
 cmd  config  Dockerfile  go.mod  go.sum  hack  Makefile  PROJECT  README.md  test".  
-YOU STILL NEED TO CREATE A API USING "create api" COMMAND TO HAVE CRD/CONTROLLER TEMPELATE CODE.
+YOU STILL NEED TO CREATE A API USING **"create api"** COMMAND TO HAVE CRD/CONTROLLER TEMPELATE CODE.
 
 
 ### Step3
 **Create a new API (CRD/CONTROLLER)**  
 ```kubebuilder create api --group apps --version v1 --kind Cars```  
 **NOTE:** This command creates a new api under "apps" group of version "v1" and kind "Cars". Also, tempelate code files for the crd and controller(reconciller) will be generated, which will be updated by us to generate the desired behaviour of our CRDs and respective Controller.  
-**The Directory Structure after this:**
-├── api/
-│   └── v1/
-│       ├── cars_types.go        # Schema definition
-│       └── groupversion_info.go
-├── internal/controllers/
-│   └── cars_controller.go       # Reconcile logic (empty scaffold)
-├── config/
-│   ├── crd/bases/               # CRD YAML
+**The Directory Structure after this:**  
+├── api/  
+│   └── v1/  
+│       ├── cars_types.go        # Schema definition  
+│       └── groupversion_info.go  
+├── internal/controllers/  
+│   └── cars_controller.go       # Reconcile logic (empty scaffold)  
+├── config/  
+│   ├── crd/bases/               # CRD YAML  
 │   └── samples/                 # Sample CustomResource YAML
 
 
