@@ -1,0 +1,9 @@
+apiVersion: apps.rajat.com/v1
+kind: Cars
+metadata:
+  name: harrier
+  labels:
+    identifierl: carslabel
+  namespace: carsproduction
+spec:
+  start: warmup

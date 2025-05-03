@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cars-role
+rules:
+- apiGroups:
+  - apps.rajat.com
+  resources:
+  - cars
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apps.rajat.com
+  resources:
+  - cars/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - apps.rajat.com
+  resources:
+  - cars/status
+  verbs:
+  - get
+  - patch
+  - update
