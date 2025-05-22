@@ -72,7 +72,7 @@ In this step we will give our Cars CRD and it's respective Controller behavioura
 ### Step7
 **Build and Deploy the Docker image to deploy the Controller on the Kubernetes cluster**  
 ```IMG=<registory>/controller:latest make docker-build docker-push```  
-```IMG=overcloudregistry.io:5113/flcm/controller:latest make deploy```
+```IMG=<registory>/controller:latest make deploy```
 
 ### Step8
 **Create the instance of created CRD in kubernetes cluster using yaml**  
